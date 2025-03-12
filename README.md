@@ -3,6 +3,7 @@
 ### Backend: Express.js
 Start back end
 ```
+npm install
 node server.js
 ```
 
