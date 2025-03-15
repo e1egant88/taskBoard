@@ -5,7 +5,8 @@ import db from './db.js';
 import 'dotenv/config';
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5001;
+const API_BASE_URL = process.env.API_BASE_URL || `http://localhost:${PORT}`;
 
 app.use(cors())
 // Middleware to parse JSON request bodies
@@ -13,7 +14,7 @@ app.use(express.json());
 
 app.get('/config', (req, res) => {
   res.json({
-      apiBaseUrl: process.env.API_BASE_URL,
+      apiBaseUrl: API_BASE_URL,
   });
 });
 
