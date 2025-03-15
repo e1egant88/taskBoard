@@ -1,13 +1,21 @@
-const express = require('express');
-const cors = require('cors')
-const bcrypt = require('bcrypt');
-const db = require('./db'); // Import the database connection
+import express from 'express';
+import cors from 'cors';
+import bcrypt from 'bcrypt';
+import db from './db.js'; 
+import 'dotenv/config';
+
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT;
 
 app.use(cors())
 // Middleware to parse JSON request bodies
 app.use(express.json());
+
+app.get('/config', (req, res) => {
+  res.json({
+      apiBaseUrl: process.env.API_BASE_URL,
+  });
+});
 
 // Create a new item in the database (Insert Operation)
 app.post('/create', (req, res) => {
